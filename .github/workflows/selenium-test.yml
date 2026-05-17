@@ -7,6 +7,10 @@ on:
     branches: ["main"]
   workflow_dispatch: # bisa run manual
 
+  schedule:
+    - cron: "0 1 * * *"  # setiap hari jam 01.00 UTC = 08.00 WIB
+
+
 jobs:
   selenium-test:
     runs-on: ubuntu-latest
