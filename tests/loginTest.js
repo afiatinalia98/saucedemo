@@ -32,12 +32,28 @@ async function LoginTest() {
             await loginPage.open(testdata.url)
         })
 
-        it("TCL001 - Success Login using Valid Credential", async function () {
+        it("TNL001 - Failed Login using Invalid Username", async function () {
+            await loginPage.loginFailed(testdata.invalidCred.username, testdata.validCred.password)
+
+            await loginPage.verifyFailedLogin(testdata.expectedText.errorMessage, testdata.message.errorMessageDissapear)
+        })
+
+        it("TNL002 - Failed Login using Invalid Password", async function () {
+            await loginPage.loginFailed(testdata.validCred.username, testdata.invalidCred.password)
+
+            await loginPage.verifyFailedLogin(testdata.expectedText.errorMessage, testdata.message.errorMessageDissapear)
+        })
+
+        it("TPL003 - Success Login using Valid Credential", async function () {
             await loginPage.login(testdata.validCred.username, testdata.validCred.password)
 
             await homePage.verifySuccessLogin(testdata.expectedText.productItem1, testdata.message.productItemDisappear)
+        })
 
-
+        afterEach(async function () {
+            if (driver) {
+                await driver.quit()
+            }
         })
     })
 }

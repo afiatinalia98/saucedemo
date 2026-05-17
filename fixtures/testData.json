@@ -4,10 +4,16 @@
         "username": "standard_user",
         "password": "secret_sauce"
     },
+    "invalidCred": {
+        "username": "erroruser",
+        "password": "errorpass"
+    },
     "expectedText": {
-        "productItem1": "Sauce Labs Backpack"
+        "productItem1": "Sauce Labs Backpack",
+        "errorMessage": "Epic sadface: Username and password do not match any user in this service"
     },
     "message": {
-        "productItemDisappear": "Product not found"
+        "productItemDisappear": "Product not found",
+        "errorMessageDissapear": "Error message not found"
     }
 }
