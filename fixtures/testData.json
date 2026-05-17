@@ -1,0 +1,13 @@
+{
+    "url": "https://www.saucedemo.com/",
+    "validCred": {
+        "username": "standard_user",
+        "password": "secret_sauce"
+    },
+    "expectedText": {
+        "productItem1": "Sauce Labs Backpack"
+    },
+    "message": {
+        "productItemDisappear": "Product not found"
+    }
+}

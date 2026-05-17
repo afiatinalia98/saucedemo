@@ -1,0 +1,39 @@
+name: Selenium Automation Test
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch: # bisa run manual
+
+jobs:
+  selenium-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Ambil kode dari repo
+      - name: Checkout kode
+        uses: actions/checkout@v4
+
+      # 2. Siapkan Node.js
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm" # cache deps, install lebih cepat
+
+      # 3. Install Chrome (sudah include di ubuntu-latest,
+      #    tapi ini memastikan versi terbaru)
+      - name: Setup Google Chrome
+        uses: browser-actions/setup-chrome@latest
+
+      # 4. Install semua package dari package.json
+      - name: Install dependencies
+        run: npm ci # pakai ci bukan install (lebih strict)
+
+      # 5. Jalankan test Selenium + Mocha
+      - name: Run Selenium tests
+        run: npm test
+        env:
+          BASE_URL: ${{ secrets.BASE_URL }}
