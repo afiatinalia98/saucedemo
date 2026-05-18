@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha tests/*.js --timeout 30000"
+    "test": "mocha tests/*.js --timeout 30000 --reporter mochawesome --reporter-options reportDir=report,reportFilename=hasil-test"
   },
   "keywords": [],
   "author": "",
@@ -12,6 +12,8 @@
   "type": "commonjs",
   "devDependencies": {
     "mochawesome": "^7.1.4",
+    "mochawesome-merge": "^5.1.1",
+    "mochawesome-report-generator": "^6.3.2",
     "selenium-webdriver": "^4.44.0"
   },
   "dependencies": {

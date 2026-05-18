@@ -41,3 +41,11 @@ jobs:
         run: npm test
         env:
           BASE_URL: ${{ secrets.BASE_URL }}
+      
+      # 6. Buatkan reporting
+      - name: Upload test report
+        uses: actions/upload-artifact@v4
+        if: always() # upload walaupun test gagal
+        with:
+          name: laporan-selenium
+          path: report/
